@@ -1,0 +1,60 @@
+﻿<form name="formClass" role="form" ng-submit="AddClass(class)">
+    <div class="row jumbotron">
+        <h3><label>Maintain Classes</label></h3>
+        <hr />
+        <div class="col-lg-4">
+            <h2>New Class</h2>
+            <div class="form-group" ng-class="{ 'has-error': form.dayofweek.$dirty && form.dayofweek.$error.required || form.dayofweek.$dirty && form.dayofweek.$invalid}">
+                <label for="classname">Day of Week</label>
+                <input type="text" name="dayofweek" id="dayofweek" class="form-control" ng-model="class.DayOfWeek" required />
+                <span ng-show="form.dayofweek.$dirty && form.dayofweek.$error.required" class="help-block">Required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.grade.$dirty && form.grade.$error.required || form.grade.$dirty && form.grade.$invalid}">
+                <label for="classname">Grade</label>
+                <input type="number" name="grade" id="grade" class="form-control" ng-model="class.Grade" min="8" max="12" required />
+                <span ng-show="form.grade.$dirty && form.grade.$error.required" class="help-block">Required</span>
+                <span ng-show="form.grade.$dirty && form.grade.$invalid" class="help-block">Please select a grade from 8 to 12</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.subject.$dirty && form.subject.$error.required || form.subject.$dirty && form.subject.$invalid}">
+                <label for="classname">Subject</label>
+                <input type="text" name="subject" id="subject" class="form-control" ng-model="class.Subject" required />
+                <span ng-show="form.subject.$dirty && form.subject.$error.required" class="help-block">Required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Add Class</button>
+            </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-3" ng-show="CLValid">
+            <h2>Class List</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        <!--<a href="#!/MC" ng-click="orderByField='DayOfWeek'; reverseSort = !reverseSort">-->
+                        Day of Week<!--<span ng-show="orderByField == 'DayOfWeek'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>-->
+                        <!--</a>-->
+                    </th>
+                    <th>
+                        <!--<a href="#!/MC" ng-click="orderByField='Grade'; reverseSort = !reverseSort">-->
+                        Grade
+                        <!--<span ng-show="orderByField == 'Grade'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                    </a>-->
+                    </th>
+                    <th>
+                        <a href="#!/MC" ng-click="orderByField='Subject'; reverseSort = !reverseSort">
+                            Subject <span ng-show="orderByField == 'Subject'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                        </a>
+                    </th>
+                </tr>
+                <tr ng-repeat="(key, value) in classlist | orderBy:orderByField:reverseSort">
+                    <td><h4>{{value.DayOfWeek}}</h4></td>
+                    <td><h4>{{value.Grade}}</h4></td>
+                    <td><h4>{{value.Subject}}</h4></td>
+                    <td><button type="button" name="remove" class="btn btn-primary" ng-click="RemoveClass(key)">Remove</button></td>
+                </tr>
+            </table>
+            <div class="form-actions">
+                <button type="submit" ng-show="UpdateValid" class="btn btn-primary" ng-click="SubmitClassList()">Save Class List</button>
+            </div>
+        </div>
+    </div>
+</form>

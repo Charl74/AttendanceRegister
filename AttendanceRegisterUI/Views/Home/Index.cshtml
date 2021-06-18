@@ -1,0 +1,45 @@
+﻿@{
+//Layout = null;
+}
+
+<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+
+    <script src="~/Controllers/ReportsController.js"></script>
+    <script src="~/Controllers/StudentController.js"></script>
+    <script src="~/Controllers/ClassController.js"></script>
+    <script src="~/Controllers/ARController.js"></script>
+    <script src="~/Controllers/RegisterController.js"></script>
+    <script src="~/Controllers/LoginController.js"></script>
+    <script src="~/AppScripts/App.js"></script>
+</head>
+<body>
+    <div class="container">
+        @*<nav role="navigation" class="navbar navbar-inverse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!AR">Attendance Register</a></li>
+                <li><a href="#!MC">Maintain Classes</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="pull-right"><a href="#!Login">Login</a></li>
+            </ul>
+        </nav>*@
+
+        <div ng-view>
+        </div>
+
+        @*<footer>
+            <p>&copy; @DateTime.Now.Year - Attendance Register</p>
+        </footer>*@
+    </div>
+</body>
+</html>

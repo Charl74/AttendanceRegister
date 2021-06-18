@@ -1,0 +1,67 @@
+﻿<form name="formStudent" role="form" ng-submit="AddStudent(student)" >
+    <div class="row jumbotron">
+        <h3><label>Maintain Students</label></h3>
+        <hr />
+        <div ng-show="showClassSearch">
+            <label>Class Search</label>
+            <div class="form-group">
+                <input type="text" name="SearchText" id="SearchText" ng-model="SearchText" ng-keyup="lookupClass(SearchText)" class="form-control" autocomplete="off" placeholder="Type Class Name Here..." />
+                <ul class="list-group col-lg-3" ng-model="hideList" ng-hide="hideList">
+                    <li class="list-group-item" ng-repeat="value in filterClassName | orderBy:['Subject']" ng-click="fillClassTextBox(value.ClassId, value.DayOfWeek + ' Grade:' + value.Grade + ' ' + value.Subject)">
+                        {{value.DayOfWeek + ' Grade:' + value.Grade + ' ' + value.Subject}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4" ng-show="showStudentDetails">
+            <h3>Student Details</h3>
+            <div class="form-group" ng-class="{ 'has-error': formStudent.title.$dirty && formStudent.title.$error.required }">
+                <label for="title">First name</label>
+                <input type="text" name="title" id="title" class="form-control" ng-model="student.Title" required />
+                <span ng-show="formStudent.title.$dirty && formStudent.title.$error.required" class="help-block">Required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formStudent.firstName.$dirty && formStudent.firstName.$error.required }">
+                <label for="firstName">First name</label>
+                <input type="text" name="firstName" id="firstName" class="form-control" ng-model="student.FirstName" required />
+                <span ng-show="formStudent.firstName.$dirty && formStudent.firstName.$error.required" class="help-block">Required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': formStudent.lastName.$dirty && formStudent.lastName.$error.required }">
+                <label for="lastName">Last name</label>
+                <input type="text" name="lastName" id="lastName" class="form-control" ng-model="student.LastName" required />
+                <span ng-show="formStudent.lastName.$dirty && formStudent.lastName.$error.required" class="help-block">Required</span>
+            </div>
+            <div class="form-group">
+                <input type="text" name="grade" id="grade" class="form-control" ng-model="student.GradeName" value="student.GradeName" ng-hide="true" />
+            </div>
+            <div class="form-group">
+                <input type="text" name="classId" id="classId" class="form-control" ng-model="student.ClassId" value="student.ClassId" ng-hide="true" />
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="formStudent.$invalid" class="btn btn-primary">Add Student</button>
+            </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-3" ng-show="SValid">
+            <h2>Student List</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Title</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Grade</th>
+                </tr>
+                <tr ng-repeat="(key, value) in studentList">
+                    <td><h4>{{value.Title}}</h4></td>
+                    <td><h4>{{value.FirstName}}</h4></td>
+                    <td><h4>{{value.LastName}}</h4></td>
+                    <td><h4>{{value.GradeName}}</h4></td>
+                    <td ng-hide="true"><h4>{{value.GradeId}}</h4></td>
+                    <td ng-hide="true"><h4>{{value.ClassId}}</h4></td>
+                    <td><button type="button" name="remove" class="btn btn-primary" ng-click="RemoveStudent(key, value)">Remove</button></td>
+                </tr>
+            </table>
+            <div class="form-actions">
+                <button type="submit" ng-show="UpdateValid" class="btn btn-primary" ng-click="SubmitStudentList()">Update Student List</button>
+            </div>
+        </div>
+    </div>
+</form>

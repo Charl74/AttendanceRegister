@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="cee075d6-b9c0-46ed-b3d0-674f8c6a2aee" ChangeDateTime="06/12/2021 08:27:28">
+    <Property Name="ElementName" Value="[dbo].[Classes].[ClassName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Classes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DayOfWeek" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e593ae0b-239a-4edb-974f-070eed43a304" ChangeDateTime="06/12/2021 08:37:16">
+    <Property Name="ElementName" Value="[dbo].[Classes].[Grade]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Classes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GradeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ef8e0f5c-8ced-4282-9b1c-d38416185b42" ChangeDateTime="06/12/2021 14:53:39">
+    <Property Name="ElementName" Value="[dbo].[Students].[Grade]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Students]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GradeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e5576b27-683f-485a-a3a9-2d7b08a901a6" ChangeDateTime="06/13/2021 08:34:45">
+    <Property Name="ElementName" Value="[dbo].[StudentClasses].[StudetnId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[StudentClasses]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="StudentId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="34201f97-a173-4a02-a388-a15b37516d39" ChangeDateTime="06/15/2021 15:01:00">
+    <Property Name="ElementName" Value="[dbo].[Attendance].[ClassDateTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Attendance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClassDate" />
+  </Operation>
+</Operations>

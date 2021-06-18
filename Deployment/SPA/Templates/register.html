@@ -1,0 +1,43 @@
+﻿<form name="form" role="form" ng-submit="registerUser()">
+    <div class="row jumbotron">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h2>Register</h2>
+            <div class="form-group" ng-class="{ 'has-error': form.title.$dirty && form.title.$error.required }">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" class="form-control" ng-model="user.title" required />
+                <span ng-show="form.title.$dirty && form.title.$error.required" class="help-block">Title name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+                <label for="firstName">First name</label>
+                <input type="text" name="firstName" id="firstName" class="form-control" ng-model="user.firstName" required />
+                <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+                <label for="lastName">Last name</label>
+                <input type="text" name="lastName" id="Text1" class="form-control" ng-model="user.lastName" required />
+                <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Last name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required || form.email.$dirty && form.email.$invalid}">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" class="form-control" ng-model="user.email" required />
+                <span ng-show="form.email.$dirty && form.email.$invalid" class="help-block">Valid Email is required</span>
+                <span ng-show="form.email.$dirty && form.email.$error.required" class="help-block">Email is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" ng-model="user.password" required ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/" />
+                <span ng-show="form.password.$dirty && form.password.$invalid" class="help-block">Password should be at least 6 characters long. <br />It should contain one number ,one uppercase character and one special character.</span>
+                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.confirmpassword.$dirty && form.confirmpassword.$error.required }">
+                <label for="confirmpassword">Confirm Password</label>
+                <input type="password" name="confirmpassword" id="confirmpassword" class="form-control" ng-model="user.confirmpassword" required compare-to="user.password" />
+                <span ng-show="form.confirmpassword.$dirty && form.confirmpassword.$invalid" class="help-block">Does not match Password</span>
+                <span ng-show="form.confirmpassword.$dirty && form.confirmpassword.$error.required" class="help-block">Confirm Password is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+</form>

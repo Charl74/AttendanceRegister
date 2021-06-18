@@ -1,0 +1,38 @@
+﻿<form id="formReports" role="form">
+    <div class="row jumbotron">
+        <h3><label>Reports</label></h3>
+        <hr />
+        <div ng-hide="hideReportOptions">
+            <div class="col-lg-4">
+                <div ng-show="showStudentSearch">
+                    <label>Student Search</label>
+                    <div class="form-group">
+                        <input type="text" name="SearchText" id="SearchText" ng-model="SearchText" ng-keyup="lookupStudent(SearchText)" class="form-control" autocomplete="off" placeholder="For Specific Student, Type Name Here..."/>
+                        <ul class="list-group" ng-model="hideList" ng-hide="hideSearceList">
+                            <li class="list-group-item" ng-repeat="value in filterStudentName | orderBy:['FirstName']" ng-click="fillStudentTextBox(value.StudentId, value.FirstName + ' ' + value.LastName +' Grade:' + value.GradeName)">
+                                {{value.FirstName + ' ' + value.LastName +' Grade:' + value.GradeName}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="DailyReport()">Daily Attendance Report</button>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1">
+                <table>
+                    <tr>
+                        <td><label>Term Start Date</label></td>
+                        <td><input type="date" name="termstart"  required /></td>
+                        <td><md-datepicker ng-model="termdate.termstartdate" md-placeholder="Enter date" md-is-open="ctrl.isOpen"></md-datepicker></td>
+                    </tr>
+                    <tr>
+                        <td><label>Term End Date</label></td>
+                        <td><input type="date" name="termend" ng-model="termdate.termenddate" required /></td>
+                        <td><button type="submit" class="btn btn-primary" ng-click="TermReport()" ng-disabled="formReports.$invalid">Term Report</button></td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>                
+            </div>
+        </div>
+    </div>
+</form>

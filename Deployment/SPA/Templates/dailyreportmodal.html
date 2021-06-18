@@ -1,0 +1,29 @@
+﻿<form id="formDailyReportsModal" role="form">
+    <div class="modal-header col-lg-12">
+        <h4 class="modal-title" id="dailyreportmodal">Daily Report</h4>
+    </div>
+    <div class="modal-body">
+        <table ng-repeat="class in dailyReportsList | orderBy : 'GradeName' : true" class="table table-bordered" ng-hide="hideDailyReport">
+            <tr>
+                <td><label>Class: </label>{{ class.ClassName }} <label>Grade: </label>{{ class.GradeName }} <label>Date: </label>{{class.Date}} <label>Time: </label>{{class.Time}}</td>
+            </tr>
+            <tr>
+                <th><label style="width:50%">Student Name</label><label>Class Attended</label></th>
+            </tr>
+            <tr>
+                <td>
+                    <table ng-repeat="student in class.DailyReportStudentList" class="table table-bordered">
+                        <tr>
+                            <td style="width:50%">{{student.StudentName }}</td>
+                            <td style="width:50%">{{student.ClassAttended}}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button onclick="window.print()" class="btn btn-primary" ng-hide="hideDailyReport">Print Report</button>
+        <button class="btn btn-info" ng-click="close()">Close Report</button>
+    </div>
+</form>

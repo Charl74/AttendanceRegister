@@ -1,0 +1,23 @@
+﻿<form name="formlogin" role="form" ng-submit="loginUser()">
+    <div class="row jumbotron">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h2>Login</h2>
+            <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required || form.username.$dirty && form.username.$invalid}">
+                <label for="username">Username</label>
+                <input type="email" name="username" id="username" class="form-control" ng-model="login.username"required />
+                <span ng-show="form.username.$dirty && form.username.$invalid" class="help-block">Valid Email is required</span>
+                <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" ng-model="login.password" required ng-pattern="/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/"/>
+                <span ng-show="form.password.$dirty && form.password.$invalid" class="help-block">Password should be at least 6 characters long. <br />It should contain one number ,one uppercase character and one special character.</span>
+                <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Login</button>
+                <a href="#!/Register" class="btn btn-link">Register</a>
+            </div>
+        </div>
+    </div>
+</form>

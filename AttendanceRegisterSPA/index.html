@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html ng-app="App">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-route.js"></script>
+    <script src="Scripts/App.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav role="navigation" class="navbar navbar-inverse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!Home">Home</a></li>
+                <li><a href="#!Register">Register</a></li>
+            </ul>
+        </nav>
+
+        <div ng-view>
+        </div>
+        <h4 style="margin-top:40px;" class="text-left text-info">Attendance Register</h4>
+    </div>
+</body>
+</html>

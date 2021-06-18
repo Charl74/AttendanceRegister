@@ -1,0 +1,39 @@
+﻿<form name="formAttendanceRegister" role="form">
+    <div class="row jumbotron">
+        <h3><label>Attendance Register</label></h3>
+        <hr />
+        <div ng-show="showClassSearch">
+            <div class="form-group">
+                <label>Class Search</label>
+                <input type="text" name="SearchText" id="SearchText" ng-model="SearchText" ng-keyup="lookupClass(SearchText)" class="form-control" autocomplete="off" placeholder="Type Class Name Here..." />
+                <ul class="list-group col-lg-3" ng-model="hideList" ng-hide="hideList">
+                    <li class="list-group-item" ng-repeat="value in filterClassName | orderBy:['Subject']" ng-click="fillClassTextBox(value.ClassId, value.DayOfWeek + ' Grade:' + value.Grade + ' ' + value.Subject)">
+                        {{value.DayOfWeek + ' Grade:' + value.Grade + ' ' + value.Subject}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-3" ng-show="SValid">
+            <h2>Attendance List</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Title</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Present</th>
+                </tr>
+                <tr ng-repeat="(key, value) in classList">
+                    <td><h4>{{value.Title}}</h4></td>
+                    <td><h4>{{value.FirstName}}</h4></td>
+                    <td><h4>{{value.LastName}}</h4></td>
+                    <td ng-hide="true"><h4>{{value.Grade}}</h4></td>
+                    <td ng-hide="true"><h4>{{value.ClassId}}</h4></td>
+                    <td><input type="checkbox" name="present" id="present" ng-model="value.ClassAttended" /></td>
+                </tr>
+            </table>
+            <div class="form-actions">
+                <button type="submit" ng-show="SValid" class="btn btn-primary" ng-click="UpdateAttendanceList()">Update Attendance List</button>
+            </div>
+        </div>
+    </div>
+</form>
